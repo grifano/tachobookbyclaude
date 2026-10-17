@@ -25,7 +25,15 @@ struct TachoBookByClaudeApp: App {
 
     var body: some Scene {
         WindowGroup {
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains(DayLogCardDemoScreen.launchArgument) {
+                DayLogCardDemoScreen()
+            } else {
+                ContentView()
+            }
+            #else
             ContentView()
+            #endif
         }
         .modelContainer(sharedModelContainer)
     }
